@@ -1,20 +1,7 @@
 // Redundant Solution:
 class Solution {
 public:
-    ListNode* reverse(ListNode* l) {
-        ListNode* p = l;
-        ListNode* pnext = p->next;
-        while(pnext != NULL) {
-            ListNode* pnn = pnext->next;
-            pnext->next = p;
-            p = pnext;
-            pnext = pnn;
-        }
-        return p;
-    }
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-//        l1 = reverse(l1);
-//        l2 = reverse(l2);
         ListNode*  h = NULL;
         ListNode* p = NULL;
         ListNode* q = NULL;
@@ -61,8 +48,6 @@ public:
 //class Solution {
 //public:
 //    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-//        //        l1 = reverse(l1);
-//        //        l2 = reverse(l2);
 //        ListNode*  h = new ListNode(0);
 //        ListNode* p = h;
 //        int c = 0;
