@@ -108,7 +108,7 @@ public:
 class Solution {
 public:
     inline bool isMatch(char s, char p) {
-        return p == '.' || s == p;
+        return p == '?' || s == p;
     }
 
     bool isMatch(string s, string p) {
@@ -130,9 +130,9 @@ public:
                 }
                 else {
                     // match zero time?
-                    bool tmp1 = j >= 2 && dp[i][j-2];
+                    bool tmp1 = j >= 1 && dp[i][j-1];
                     // match at least one time?
-                    bool tmp2 = i > 0 && isMatch(s[i-1], p[j-2]) && dp[i-1][j];
+                    bool tmp2 = i > 0 && isMatch(s[i-1], p[j-1]) && dp[i-1][j];
                     dp[i][j] = tmp1 || tmp2;
                 }
             }
