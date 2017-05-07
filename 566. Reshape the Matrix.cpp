@@ -1,3 +1,5 @@
+// cheating sulution using numpy
+
 import numpy as np
 
 class Solution(object):
