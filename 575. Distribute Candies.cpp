@@ -1,3 +1,4 @@
+// my solution
 class Solution {
 public:
     int distributeCandies(vector<int>& candies) {
@@ -13,5 +14,17 @@ public:
             }
         }
         return ans;
+    }
+};
+
+// concise solution using set
+class Solution {
+public:
+    int distributeCandies(vector<int>& candies) {
+        set s;
+        for (auto c: candies) {
+            s.insert(c);
+        }
+        return min(candies.size() / 2, s.size());
     }
 };

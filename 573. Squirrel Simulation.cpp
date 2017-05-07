@@ -12,11 +12,11 @@ public:
         for (int i = 0; i < nuts.size(); i ++) {
             allDist += 2 * dist(tree, nuts[i]);
         }
-        long long ans = INT_MAX;
+        int ans = INT_MAX;
         for (int i = 0; i < nuts.size(); i ++) {
-            auto cur = allDist + dist(squirrel, nuts[i]) - dist(nuts[i], tree);
+            auto cur = dist(squirrel, nuts[i]) - dist(nuts[i], tree);
             ans = min(ans, cur);
         }
-        return (int)ans;
+        return (int)(ans + allDist);
     }
 };

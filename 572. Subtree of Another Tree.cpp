@@ -11,38 +11,19 @@ class Solution {
 public:
     bool equal(TreeNode* s, TreeNode* t) {
         if (s == NULL) {
-            if (t == NULL) {
-                return true;
-            }
-            else {
-                return false;
-            }
+            return t == NULL;
         }
         else {
-            if (t == NULL) {
-                return false;
-            }
-            else {
-                return s->val == t->val && equal(s->left, t->left) && equal(s->right, t->right);
-            }
+            return t!= NULL && s->val == t->val
+                && equal(s->left, t->left) && equal(s->right, t->right);
         }
     }
     bool isSubtree(TreeNode* s, TreeNode* t) {
         if (s == NULL) {
-            if (t == NULL) {
-                return true;
-            }
-            else {
-                return false;
-            }
+            return t == NULL;
         }
         else {
-            if (t == NULL) {
-                return false;
-            }
-            else {
-                return equal(s, t) || isSubtree(s->left, t) || isSubtree(s->right, t);
-            }
+            return t != NULL && equal(s, t) || isSubtree(s->left, t) || isSubtree(s->right, t);
         }
 
     }
