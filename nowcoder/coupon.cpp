@@ -23,6 +23,17 @@
 const int maxn = 500000 + 10;
 using namespace std;
 
+bool process_unknown(set<int>& unkown, int v) {
+    auto iter = unkown.lower_bound(v);
+    if (iter == unkown.end()) {
+        return true;
+    }
+    else {
+        unkown.erase(iter);
+        return false;
+    }
+}
+
 int main(int argc, const char * argv[]) {
     int m = 0;
     string tmp;
@@ -46,13 +57,7 @@ int main(int argc, const char * argv[]) {
                         I[x] = i;
                     }
                     else {
-                        auto iter = unkown.lower_bound(I[x]);
-                        if (iter == unkown.end()) {
-                            wrong = true;
-                        }
-                        else {
-                            unkown.erase(iter);
-                        }
+                        wrong = process_unknown(unkown, I[x]);
                     }
                 }
                 else {
@@ -60,13 +65,7 @@ int main(int argc, const char * argv[]) {
                         O[x] = i;
                     }
                     else {
-                        auto iter = unkown.lower_bound(O[x]);
-                        if (iter == unkown.end()) {
-                            wrong = true;
-                        }
-                        else {
-                            unkown.erase(iter);
-                        }
+                        wrong = process_unknown(unkown, O[x]);
                     }
                 }
                 if (wrong) {

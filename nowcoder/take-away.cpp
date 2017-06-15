@@ -28,27 +28,19 @@ bool dfs(vector<int>& a, vector<int>& b, vector<bool>&v, vector<bool>& hasCycle,
     }
     else {
         v[cur] = true;
-        auto to = cur + a[cur];
-        if (to >= 0 && to < a.size()) {
-            if (v[to]) {
-                hasCycle[to] = true;
-            }
-            else {
-                result += 'a';
-                if (dfs(a, b, v, hasCycle, to, result)) return true;
-                result.pop_back();
-            }
-        }
-
-        to = cur + b[cur];
-        if (to >= 0 && to < a.size()) {
-            if (v[to]) {
-                hasCycle[to] = true;
-            }
-            else {
-                result += 'b';
-                if (dfs(a, b, v, hasCycle, to, result)) return true;
-                result.pop_back();
+        int tos[2] = {cur + a[cur], cur + b[cur]};
+        char chars[2] = {'a', 'b'};
+        for (int i = 0; i < 2; i ++) {
+            auto to = tos[i];
+            if (to >= 0 && to < a.size()) {
+                if (v[to]) {
+                    hasCycle[to] = true;
+                }
+                else {
+                    result += chars[i];
+                    if (dfs(a, b, v, hasCycle, to, result)) return true;
+                    result.pop_back();
+                }
             }
         }
     }
