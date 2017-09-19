@@ -37,8 +37,7 @@ public:
             l2 = l2->next;
         }
         if (c != 0) {
-            q = new ListNode(c);
-            p->next = q;
+            p->next = new ListNode(c);;
         }
         return h;
     }

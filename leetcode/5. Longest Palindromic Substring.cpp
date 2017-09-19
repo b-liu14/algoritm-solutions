@@ -23,13 +23,6 @@ public:
 // O(N^2)
 class Solution {
 public:
-    bool isPalindromic(string s, int head, int tail) {
-        for (int i = head; i <= (tail + head) / 2; i ++) {
-            if (s[i] != s[head + tail - i])
-                return false;
-        }
-        return true;
-    }
     string longestPalindrome(string s) {
         string ans = "";
         // odd
