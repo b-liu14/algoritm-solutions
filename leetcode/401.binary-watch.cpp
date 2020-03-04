@@ -73,11 +73,7 @@ public:
             }
             for (auto h : n_LED_h[i]) {
                 for (auto min : n_LED_min[num - i]) {
-                    auto min_str = to_string(min);
-                    if (min_str.size() < 2) {
-                        min_str = "0" + min_str;
-                    }
-                    ans.push_back(to_string(h) + ":" + min_str);
+                    ans.push_back(to_string(h) + (min < 10 ? ":0" : ":") + to_string(min));
                 }
             }
         }
