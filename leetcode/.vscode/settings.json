@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "set": "cpp",
-        "__functional_base": "cpp"
+        "__functional_base": "cpp",
+        "iterator": "cpp"
     }
 }
