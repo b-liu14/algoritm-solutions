@@ -33,18 +33,14 @@ using namespace std;
 class Solution {
 public:
     int countDigitOne(int n) {
-        long long interval = 10, size = 1;
         int sum = 0;
-        while (n >= size) {
-            int n1 = n - size + 1;
-            long long n2 = n1 + interval - size;
-            sum += (n2 / interval) * size;
-            int tmp = n1 % interval;
-            if (tmp < size) {
-                sum += tmp;
-            }
-            interval *= 10;
-            size *= 10;
+        // 遍历每一位
+        for (long long size = 1; size <= n; size *= 10) {
+            int prefix = n / size, suffix = n % size;
+            // 若当前位的值大于1，则1共出现 (prefix / 10 + 1) * size 次
+            // 若当前位的值等于1，则1共出现 (prefix / 10) * size + suffix + 1 次
+            // 若当前位的值等于0，则1共出现 (prefix / 10) * size 次
+            sum += (prefix + 8) / 10 * size + (prefix % 10 == 1) * (suffix + 1);
         }
         return sum;
     }
