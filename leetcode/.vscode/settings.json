@@ -2,6 +2,8 @@
     "files.associations": {
         "set": "cpp",
         "__functional_base": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "deque": "cpp",
+        "list": "cpp"
     }
 }

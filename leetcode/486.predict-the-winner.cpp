@@ -60,37 +60,35 @@
 using namespace std;
 
 // @lc code=start
+// dfs with memorization
 class Solution {
 public:
     int dp[20][20];
-    long long dfs(vector<int>& nums, int i, int j, int remain_sum) {
-        if (i > j)
-            return 0;
-        if (dp[i][j] == -1)
-            dp[i][j] = max(remain_sum - dfs(nums, i + 1, j, remain_sum - nums[i]),
-                           remain_sum - dfs(nums, i, j - 1, remain_sum - nums[j]));
-        return dp[i][j];
+    int max_score(vector<int>& nums, int l, int r) {
+        if (r == l) {
+            return nums[l];
+        }
+        if (dp[l][r] == INT_MIN) {
+            dp[l][r] = max(nums[l] - max_score(nums, l + 1, r),
+                           nums[r] - max_score(nums, l, r - 1));
+        }
+        return dp[l][r];
     }
     bool PredictTheWinner(vector<int>& nums) {
         int n = nums.size();
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                dp[i][j] = -1;
+                dp[i][j] = INT_MIN;
             }
         }
-
-        int sum = 0;
-        for (int i = 0; i < n; i++)
-            sum += nums[i];
-
-        return (2 * dfs(nums, 0, n - 1, sum) >= sum);
+        return max_score(nums, 0, nums.size() - 1) >= 0;
     }
 };
 // @lc code=end
 
 int main() {
     Solution s;
-    vector<int> nums{0, 0, 0};
+    vector<int> nums{2, 233, 5};
     cout << s.PredictTheWinner(nums) << endl;
     return 0;
 }
