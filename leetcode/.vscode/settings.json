@@ -4,6 +4,7 @@
         "__functional_base": "cpp",
         "iterator": "cpp",
         "deque": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "algorithm": "cpp"
     }
 }

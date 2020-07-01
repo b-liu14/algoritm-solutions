@@ -85,10 +85,10 @@ public:
     int maxProfit(vector<int>& prices) {
         vector<int> dp({INT_MIN, 0, INT_MIN, 0});
         for (int i = 0; i < prices.size(); ++i) {
-            dp[3] = max(dp[3], dp[2] + prices[i]);  // dp[0]: - t1_buy
-            dp[2] = max(dp[2], dp[1] - prices[i]);  // dp[1]: - t1_buy + t1_sell
-            dp[1] = max(dp[1], dp[0] + prices[i]);  // dp[2]: - t1_buy + t1_sell - t2_buy
-            dp[0] = max(dp[0], -prices[i]);         // dp[3]: - t1_buy + t1_sell - t2_buy + t2_sell
+            dp[3] = max(dp[3], dp[2] + prices[i]);  // dp[3]: - t1_buy + t1_sell - t2_buy + t2_sell
+            dp[2] = max(dp[2], dp[1] - prices[i]);  // dp[2]: - t1_buy + t1_sell - t2_buy
+            dp[1] = max(dp[1], dp[0] + prices[i]);  // dp[1]: - t1_buy + t1_sell
+            dp[0] = max(dp[0], -prices[i]);         // dp[0]: - t1_buy
         }
         return dp[3];
     }
