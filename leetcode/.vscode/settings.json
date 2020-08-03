@@ -17,6 +17,10 @@
         "string_view": "cpp",
         "initializer_list": "cpp",
         "regex": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "map": "cpp",
+        "random": "cpp",
+        "chrono": "cpp",
+        "limits": "cpp"
     }
 }
