@@ -40,6 +40,9 @@
  * 
  */
 
+#include <vector>
+using namespace std;
+
 // @lc code=start
 // reference: https://leetcode.com/problems/median-of-two-sorted-arrays/solutions
 class Solution {
